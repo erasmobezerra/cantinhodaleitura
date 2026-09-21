@@ -222,11 +222,12 @@ Com o tempo, as próximas evoluções podem incluir **estruturas mais eficientes
 
 | Nome | Curso | E-mail |
 | :--- | :--- | :--- |
-| Andrew Minto Neves | Engenharia de Software - 2º Período | <a.mintoneves@gmail.com> |
-| Erasmo Ribeiro Bezerra | Sistema de Informações - 2º Período | <erasmo.ads.tech@gmail.com> |
-| Gabriela Conceição Viana | Engenharia de Software - 2º Período | <gabivianac@gmail.com> |
-
----
+| Andrew Minto Neves | Engenharia de Software - 2º Período | a.mintoneves@gmail.com |
+| Erasmo Ribeiro Bezerra | Sistema de Informações - 2º Período | erasmo.ads.tech@gmail.com |
+| Gabriel de Jesus Santana Serri | Engenharia de Software - 2º Período | gabriel.jesus@souunisales.com.br
+|
+	
+## 🤝 Como contribuir
 
 ## 17. Como contribuir
 
