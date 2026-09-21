@@ -6,7 +6,7 @@ O projeto foi organizado com foco em **POO**, **camadas de responsabilidade** e 
 
 ---
 
-## 1. Justificativa e contexto do projeto
+## 1. 🧭 Justificativa e contexto do projeto
 
 Este projeto foi desenvolvido como requisito da disciplina de **Abstração em Estrutura de Dados**. A ideia era resolver uma situação real de biblioteca por meio da modelagem de entidades, das operações de negócio e do uso adequado de estruturas de dados em memória.
 
@@ -17,22 +17,9 @@ A solução foi pensada em duas etapas principais:
 
 ---
 
-## 2. Visão geral do sistema
+## 2. ✨ Funcionalidades principais do sistema
 
 O **Cantinho da Leitura** permite:
-
-- cadastrar livros com ISBN, título e autor;
-- cadastrar usuários com nome e CPF;
-- buscar livros e usuários;
-- listar acervo e usuários cadastrados;
-- registrar empréstimos com validação de disponibilidade;
-- realizar devoluções;
-- manter histórico de empréstimos ativos e encerrados;
-- popular dados iniciais para testes e demonstrações.
-
----
-
-## 3. Funcionalidades principais
 
 - 📖 Cadastro de livros com ISBN, título e autor
 - 👤 Cadastro de usuários com nome e CPF
@@ -45,7 +32,7 @@ O **Cantinho da Leitura** permite:
 
 ---
 
-## 4. Arquitetura do projeto
+## 3. 🏗️ Arquitetura do projeto
 
 A aplicação foi organizada em camadas para facilitar manutenção e entendimento do código:
 
@@ -63,7 +50,7 @@ Essa separação permite que a regra de negócio fique isolada das classes de mo
 
 ---
 
-## 5. Entidades do sistema
+## 4. 🧱 Entidades do sistema
 
 - **LivroModel** → ISBN, título, autor e status de disponibilidade
 - **UsuarioModel** → nome, CPF e livro atualmente emprestado
@@ -71,7 +58,7 @@ Essa separação permite que a regra de negócio fique isolada das classes de mo
 
 ---
 
-## 6. Regras de negócio
+## 5. ✅ Regras de negócio
 
 As regras do sistema foram implementadas para garantir consistência no processo de empréstimo:
 
@@ -84,16 +71,16 @@ As regras do sistema foram implementadas para garantir consistência no processo
 
 ---
 
-## 7. Estruturas de dados utilizadas
+## 6. 📊 Estruturas de dados utilizadas
 
 O projeto adota **estruturas lineares**, como `ArrayList` e `Array`, atendendo à restrição da disciplina de não usar árvores nem tabelas hash nesta etapa.
 
-### 7.1 Visão geral técnica
+### 6.1 Visão geral técnica
 
 - **ArrayList**: usado para armazenar e manipular listas dinâmicas de livros, usuários e empréstimos.
 - **Array**: utilizado em etapas iniciais para popular dados em memória.
 
-### 7.2 Complexidade das operações
+### 6.2 Complexidade das operações
 
 | Operação | Array | ArrayList | Observação |
 | --- | ---: | ---: | --- |
@@ -105,7 +92,7 @@ O projeto adota **estruturas lineares**, como `ArrayList` e `Array`, atendendo �
 | Iteração completa | O(n) | O(n) | eficiente para listagens |
 | Crescimento dinâmico | Não automático | Sim | ArrayList gerencia redimensionamento |
 
-### 7.3 Aplicação no sistema
+### 6.3 Aplicação no sistema
 
 - **Acervo de livros**: armazenamento centralizado de todas as entradas de livros.
 - **Cadastro de usuários**: gerenciamento dos usuários cadastrados no sistema.
@@ -113,7 +100,7 @@ O projeto adota **estruturas lineares**, como `ArrayList` e `Array`, atendendo �
 
 ---
 
-## 8. Estrutura de diretórios
+## 7. 📁 Estrutura de diretórios
 
 ```text
 cantinhodaleitura/
@@ -132,6 +119,11 @@ cantinhodaleitura/
 │   │   ├── LivroService.java
 │   │   └── UsuarioService.java
 │   ├── test/
+│   │   ├── BibliotecaServiceTest.java
+│   │   ├── LivroServiceTest.java
+│   │   ├── ManualTestRunner.java
+│   │   ├── TestUtils.java
+│   │   └── UsuarioServiceTest.java
 │   ├── ui/
 │   │   ├── BibliotecaUI.java
 │   │   ├── LivroUI.java
@@ -146,7 +138,7 @@ cantinhodaleitura/
 
 ---
 
-## 9. Tecnologias utilizadas
+## 8. 🛠️ Tecnologias utilizadas
 
 - ☕ Java 17+
 - 🧱 Programação orientada a objetos
@@ -157,7 +149,7 @@ cantinhodaleitura/
 
 ---
 
-## 10. Pré-requisitos
+## 9. ⚙️ Pré-requisitos
 
 - ☕ JDK 17 ou superior
 - 💻 IDE ou terminal compatível (IntelliJ, Eclipse, VS Code)
@@ -165,7 +157,7 @@ cantinhodaleitura/
 
 ---
 
-## 11. Como executar o projeto
+## 10. ▶️ Como executar o projeto
 
 1. Abra o projeto em sua IDE favorita.
 2. Compile e execute a classe principal em `src/app/Main.java`.
@@ -177,7 +169,7 @@ cantinhodaleitura/
 
 ---
 
-## 12. Testes e validação
+## 11. 🧪 Testes e validação
 
 O projeto inclui testes manuais na pasta `src/test`, realizados sem uso de JUnit, com validações diretamente em Java para confirmar regras de negócio como:
 
@@ -190,7 +182,7 @@ O projeto inclui testes manuais na pasta `src/test`, realizados sem uso de JUnit
 
 ---
 
-## 13. Próximos passos
+## 12. 🚀 Próximos passos
 
 - 🌳 Implementar estruturas de dados não lineares, como árvores e tabelas hash
 - ⚡ Otimizar operações de busca e listagem
@@ -201,7 +193,7 @@ O projeto inclui testes manuais na pasta `src/test`, realizados sem uso de JUnit
 
 ---
 
-## 14. Conclusão
+## 13. 🎯 Conclusão
 
 O uso de **estruturas lineares** como `ArrayList` torna o sistema **didático, simples de entender e funcional para cenários acadêmicos e de média escala**. Isso favorece o aprendizado de POO, organização de código e manipulação de estruturas de dados em memória.
 
@@ -209,27 +201,24 @@ Com o tempo, as próximas evoluções podem incluir **estruturas mais eficientes
 
 ---
 
-## 15. Informações acadêmicas
+## 14. 🎓 Informações acadêmicas
 
 - **Instituição:** Centro Universitário Salesiano – UNISALES
 - **Polo:** Vitória/ES
-- **Disciplina:** Lógica Digital na Resolução de Problemas
-- **Professor Orientador:** Mestre Wesley Lucas Bred
+- **Disciplina:** Abstração em Estrutura de Dados
+- **Professor Orientador:** Lucas Daniel Barboza
 
 ---
 
-## 16. Equipe
+## 15. 👥 Equipe
 
 | Nome | Curso | E-mail |
 | :--- | :--- | :--- |
-| Andrew Minto Neves | Engenharia de Software - 2º Período | a.mintoneves@gmail.com |
-| Erasmo Ribeiro Bezerra | Sistema de Informações - 2º Período | erasmo.ads.tech@gmail.com |
-| Gabriel de Jesus Santana Serri | Engenharia de Software - 2º Período | gabriel.jesus@souunisales.com.br
-|
-	
-## 🤝 Como contribuir
+| Andrew Minto Neves | Engenharia de Software - 2º Período | <a.mintoneves@gmail.com> |
+| Erasmo Ribeiro Bezerra | Sistema de Informações - 2º Período | <erasmo.ads.tech@gmail.com> |
+| Gabriel de Jesus Santana Serri | Engenharia de Software - 2º Período | <gabriel.jesus@souunisales.com.br> | 
 
-## 17. Como contribuir
+## 16. 🤝 Como contribuir
 
 1. 🌱 Crie uma branch descritiva (exemplo: `feature/novo-cadastro`)
 2. 📝 Faça commits pequenos e objetivos
