@@ -39,7 +39,6 @@ public class ManualTestRunner {
                     " executados | " + TestUtils.getTestesPassados() + " passaram | " +
                     TestUtils.getTestesFalharam() + " falharam.");
 
-            erro.printStackTrace();
             System.exit(1);
 
         } catch (Exception erro) {
@@ -49,7 +48,6 @@ public class ManualTestRunner {
                     " executados | " + TestUtils.getTestesPassados() + " passaram | " +
                     TestUtils.getTestesFalharam() + " falharam.");
 
-            erro.printStackTrace();
             System.exit(1);
         }
     }

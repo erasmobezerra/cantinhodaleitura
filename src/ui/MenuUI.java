@@ -2,21 +2,37 @@ package ui;
 
 import java.util.Scanner;
 
+/**
+ * Classe de Interface com o Usuário (UI) responsável por exibir o menu principal interativo,
+ * gerenciar a navegação do sistema e direcionar as escolhas do usuário para as respectivas UIs especializadas.
+ */
 public class MenuUI {
 
+    // Scanner estático compartilhado para capturar as entradas do usuário no console
     private static final Scanner scanner = new Scanner(System.in);
+    // Interface responsável pelas operações de livros
     private final LivroUI livroUI;
+    // Interface responsável pelas operações de usuários
     private final UsuarioUI usuarioUI;
+    // Interface responsável pelas operações de empréstimos e devoluções
     private final BibliotecaUI bibliotecaUI;
 
+    /**
+     * Construtor que recebe as instâncias das UIs especializadas por injeção de dependência.
+     */
     public MenuUI(LivroUI livroUI, UsuarioUI usuarioUI, BibliotecaUI bibliotecaUI) {
         this.livroUI = livroUI;
         this.usuarioUI = usuarioUI;
         this.bibliotecaUI = bibliotecaUI;
     }
 
+    /**
+     * Exibe o loop principal do sistema, apresentando as opções disponíveis no menu,
+     * lendo a escolha do usuário e redirecionando para a ação correspondente.
+     */
     public void executar() {
         while (true) {
+            // Exibição do cabeçalho e opções do menu interativo
             System.out.println("=================================================");
             System.out.println("      📚 BEM-VINDO AO CANTINHO DA LEITURA 📚      ");
             System.out.println("=================================================");
@@ -42,9 +58,11 @@ public class MenuUI {
             System.out.println("-------------------------------------------------");
             System.out.print("Escolha uma opção: ");
 
+            // Leitura da opção escolhida pelo usuário
             int opcao = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Limpa o buffer do teclado
 
+            // Estrutura de decisão que direciona o fluxo com base na opção selecionada
             switch (opcao) {
                 case 1 -> bibliotecaUI.emprestarLivro();
                 case 2 -> bibliotecaUI.devolverLivro();
@@ -57,11 +75,12 @@ public class MenuUI {
                 case 9 -> bibliotecaUI.listarEmprestimos();
                 case 10 -> {
                     System.out.println("Saindo...");
-                    return;
+                    return; // Encerra a execução do menu
                 }
                 default -> System.out.println("Opção inválida.");
             }
 
+            // Pergunta ao usuário se deseja retornar ao menu ou encerrar após cada operação
             if (!retornarAoMenu()) {
                 return;
             }
@@ -69,6 +88,10 @@ public class MenuUI {
 
     }
 
+    /**
+     * Método auxiliar (privado) que exibe um submenu para decidir se o usuário
+     * deseja voltar ao menu principal ou encerrar totalmente a aplicação.
+     */
     private static boolean retornarAoMenu() {
         while (true) {
             System.out.println("\n-------------------------------------------------");
@@ -82,16 +105,14 @@ public class MenuUI {
 
             switch (opcao) {
                 case 1 -> {
-                    return true;
+                    return true; // Retorna true para continuar no loop do menu principal
                 }
                 case 2 -> {
                     System.out.println("Encerrando o programa...");
-                    return false;
+                    return false; // Retorna false para encerrar a aplicação
                 }
                 default -> System.out.println("Opção inválida. Digite '1' para Menu ou '2' para Sair.");
             }
         }
     }
 }
-
-

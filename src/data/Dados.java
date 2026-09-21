@@ -7,33 +7,50 @@ import service.UsuarioService;
 
 import java.util.List;
 
+/**
+ * Metodo principal responsável por orquestrar o preenchimento inicial dos dados
+ * utilizando os serviços de usuário e livro, exibindo um relatório de sucesso ao final.
+ */
+
 public class Dados {
 
     public void popularBiblioteca(UsuarioService usuarioService, LivroService livroService) {
         try {
+            // Popula o sistema com a lista predefinida de livros
             popularLivros(livroService);
+
+            // Popula o sistema com a lista predefinida de usuários
             popularUsuarios(usuarioService);
+
+            // Exibe mensagens no console indicando o sucesso da operação e estatísticas dos cadastros
             System.out.println("\nDADOS INICIAIS POPULADOS COM SUCESSO!");
             System.out.println("Total de livros cadastrados: " + livroService.listarLivros().size());
             System.out.println("Total de usuários cadastrados: " + usuarioService.listarUsuarios().size());
             System.out.println("-------------------------------------------------");
         } catch (Exception e) {
+            // Captura e exibe qualquer exceção ou erro que ocorra durante o processo de população
             System.out.println("Erro ao popular dados: " + e.getMessage());
         }
     }
 
+    // Percorre a constante de dados estáticos de livros e os adiciona através do serviço.
     private void popularLivros(LivroService livroService) {
         for (String[] livro : LIVROS) {
+            // Cria um novo modelo de livro usando os dados do array (ex: ISBN, Título, Autor)
             livroService.adicionarLivro(new LivroModel(livro[0], livro[1], livro[2]));
         }
     }
 
+    //Percorre a constante de dados estáticos de usuários e os adiciona através do serviço.
     private void popularUsuarios(UsuarioService usuarioService) {
         for (String[] usuario : USUARIOS) {
+            // Cria um novo modelo de usuário usando os dados do array (ex: Nome, CPF)
             usuarioService.adicionarUsuario(new UsuarioModel(usuario[0], usuario[1]));
         }
     }
 
+    // Lista constante contendo os dados estáticos (mock) de livros a serem cadastrados.
+    // Estrutura de cada linha: {ISBN, Título, Autor}
     private static final List<String[]> LIVROS = List.of(
             new String[]{"9786555601565", "Orçamento sem falhas", "Nath Finanças"},
             new String[]{"9788551006276", "Minha Sombria Vanessa", "Kate Elizabeth Russell"},
@@ -337,6 +354,8 @@ public class Dados {
             new String[]{"9788551001653", "Vovô deu no pé", "David Walliams"}
     );
 
+    // Lista constante contendo os dados estáticos (mock) de usuários a serem cadastrados.
+    // Estrutura de cada linha: {Nome, CPF/Documento}
     private static final List<String[]> USUARIOS = List.of(
             new String[]{"Alice Ribeiro", "12345678901"},
             new String[]{"Bruno Souza", "23456789012"},
