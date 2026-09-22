@@ -5,7 +5,6 @@ import model.LivroModel;
 import model.UsuarioModel;
 
 import java.util.ArrayList;
-import java.util.Scanner; // Importação presente, embora não utilizada diretamente nesta classe
 
 public class BibliotecaService {
 
