@@ -16,10 +16,8 @@ public class Dados {
 
     public void popularBiblioteca(UsuarioService usuarioService, LivroService livroService) {
         try {
-            // Popula o sistema com a lista predefinida de livros
+            // Popula o sistema com a lista predefinida de livros e usuarios
             popularLivros(livroService);
-
-            // Popula o sistema com a lista predefinida de usuários
             popularUsuarios(usuarioService);
 
             // Exibe mensagens no console indicando o sucesso da operação e estatísticas dos cadastros
