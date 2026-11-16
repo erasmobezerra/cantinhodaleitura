@@ -2,105 +2,108 @@
 
 O **Cantinho da Leitura** é um projeto em **Java** desenvolvido para simular o gerenciamento de uma biblioteca via console. A aplicação permite cadastrar livros e usuários, registrar empréstimos, controlar devoluções e consultar o acervo sem depender de banco de dados nem de interface gráfica.
 
-O projeto foi organizado com foco em **POO**, **camadas de responsabilidade** e **manipulação de coleções em memória**, sendo uma solução adequada para praticar **modelagem de domínio**, **serviços**, **interação com usuário** e **estruturas lineares**.
+O projeto foi organizado com foco em **Programação Orientada a Objetos (POO)**, separação de responsabilidades e manipulação de coleções em memória. É uma aplicação didática para praticar modelagem de domínio, serviços, interação com o usuário, **Tipos Abstratos de Dados (TADs)** e estruturas de dados lineares e não lineares.
 
 ---
 
 ## 1. 🧭 Justificativa e contexto do projeto
 
-Este projeto foi desenvolvido como requisito da disciplina de **Abstração em Estrutura de Dados**. A ideia era resolver uma situação real de biblioteca por meio da modelagem de entidades, das operações de negócio e do uso adequado de estruturas de dados em memória.
+Este projeto foi desenvolvido como requisito da disciplina de **Abstração em Estrutura de Dados**. Seu objetivo é representar operações comuns de uma biblioteca e explorar como as estruturas de dados podem apoiar o cadastro, a consulta e o controle de livros, usuários e empréstimos.
 
-A solução foi pensada em duas etapas principais:
+A solução é organizada em etapas que envolvem:
 
-1. Identificar o problema, as entidades envolvidas e as operações necessárias.
-2. Implementar um sistema com lógica de negócio, organização por camadas e testes das operações fundamentais.
-
----
-
-## 2. ✨ Funcionalidades principais do sistema
-
-O **Cantinho da Leitura** permite:
-
-- 📖 Cadastro de livros com ISBN, título e autor
-- 👤 Cadastro de usuários com nome e CPF
-- 🔍 Busca por livro e usuário
-- 📋 Listagem de livros e usuários cadastrados
-- 📦 Empréstimo de livro com validação de disponibilidade
-- 🔄 Devolução de livro com atualização de status
-- 🕑 Registro de histórico de empréstimos ativos e encerrados
-- ⚡ Popularização automática de dados iniciais para testes
+- Identificar o problema, as entidades e as regras de negócio.
+- Implementar as operações em camadas, com estruturas de dados adequadas.
+- Validar o comportamento por meio de testes e avaliar a complexidade das operações.
 
 ---
 
-## 3. 🏗️ Arquitetura do projeto
+## 2. 🚀 Tarefas a executar na nova versão do sistema
 
-A aplicação foi organizada em camadas para facilitar manutenção e entendimento do código:
+- [ ] **Criar duas branchs:** uma branch contendo a versão inicial e a segunda branch para incluir as novas implementações no sistema, principalmente as estruturas de dados não lineares.
 
-- ▶️ **app.Main**: ponto de entrada do sistema
-- 📚 **service.LivroService**: lógica de cadastro, busca e listagem de livros
-- 👥 **service.UsuarioService**: lógica de cadastro, busca e listagem de usuários
-- 🔗 **service.BibliotecaService**: operações de empréstimo e devolução
-- 📖 **model.LivroModel**: representa um livro do acervo
-- 👤 **model.UsuarioModel**: representa um usuário da biblioteca
-- 📑 **model.EmprestimoModel**: registra os dados de um empréstimo
-- 💻 **ui.***: interação com o usuário no console
-- 📂 **data.Dados**: carrega dados iniciais para simulação
+- [ ] **Implementar a interface `Map`:** utilizar `LinkedHashMap` para armazenar, consultar e verificar livros por ISBN e título, além de usuários por CPF.
 
-Essa separação permite que a regra de negócio fique isolada das classes de modelo e da interface de console.
+- [ ] **Implementar a interface `Deque`:** utilizar `Deque<EmprestimoModel>`, com implementação `ArrayDeque`, para armazenar e listar os empréstimos em ordem cronológica decrescente (do mais recente para o mais antigo).
 
----
+- [ ] **Adicionar novas opções de consulta de livros:** atualizar o menu para permitir buscas por autor(a) e título, possibilitando o retorno de um ou mais livros correspondentes. Implementar as adaptações necessárias na camada de serviço.
 
-## 4. 🧱 Entidades do sistema
+- [ ] **Aprimorar o fluxo de empréstimos:** ao selecionar a opção de empréstimo no menu, solicitar primeiro a consulta do livro (por ISBN, título ou autor(a)) e, em seguida, o CPF do usuário que deseja realizar o empréstimo.
 
-- **LivroModel** → ISBN, título, autor e status de disponibilidade
-- **UsuarioModel** → nome, CPF e livro atualmente emprestado
-- **EmprestimoModel** → usuário, livro, data de empréstimo, data prevista de devolução e status do empréstimo
+- [ ] **Atualizar os testes manuais:** revisar e executar os cenários de teste, contemplando as novas funcionalidades e estruturas de dados implementadas.
 
----
+- [ ] **Avaliação, documentação e entrega:** analisar a complexidade computacional das operações implementadas, realizar testes de desempenho com conjuntos de dados de tamanhos crescentes, comparar diferentes alternativas de implementação e entregar o código devidamente documentado, acompanhado do relatório final.
 
-## 5. ✅ Regras de negócio
 
-As regras do sistema foram implementadas para garantir consistência no processo de empréstimo:
+## 3. ✨ Funcionalidades principais
 
-- 🚫 Não permite CPF duplicado
-- 🚫 Não permite ISBN duplicado
-- 🚫 Não permite empréstimo de livro indisponível
-- 🚫 Não permite que usuário com empréstimo pendente pegue outro livro
-- ✅ Atualiza status de livro e usuário em conjunto
-- ✅ Registra devolução e encerra o empréstimo ativo
+O sistema oferece, pela interface de console, as seguintes operações:
+
+- Cadastrar e consultar livros por ISBN e título.
+- Cadastrar e consultar usuários por CPF e nome.
+- Listar o acervo e os usuários cadastrados.
+- Registrar empréstimos e devoluções, verificando a disponibilidade dos livros.
+- Consultar o histórico de empréstimos, incluindo registros ativos e concluídos.
+- Carregar dados iniciais para facilitar a demonstração do sistema.
 
 ---
 
-## 6. 📊 Estruturas de dados utilizadas
+## 4. 🏗️ Arquitetura do projeto
 
-O projeto adota **estruturas lineares**, como `ArrayList` e `Array`, atendendo à restrição da disciplina de não usar árvores nem tabelas hash nesta etapa.
+A aplicação separa a interação com o usuário, as regras de negócio, os modelos de domínio e a carga de dados iniciais:
 
-### 6.1 Visão geral técnica
+- **`app.Main`**: inicializa os serviços, carrega os dados de exemplo e inicia o menu.
+- **`service.LivroService`**: gerencia o cadastro, a busca e a listagem de livros.
+- **`service.UsuarioService`**: gerencia o cadastro, a busca e a listagem de usuários.
+- **`service.BibliotecaService`**: coordena empréstimos, devoluções e o histórico.
+- **`model`**: contém os modelos `LivroModel`, `UsuarioModel` e `EmprestimoModel`.
+- **`ui`**: contém as interfaces de console para o menu, livros, usuários e empréstimos.
+- **`data.Dados`**: fornece dados iniciais para a execução demonstrativa.
 
-- **ArrayList**: usado para armazenar e manipular listas dinâmicas de livros, usuários e empréstimos.
-- **Array**: utilizado em etapas iniciais para popular dados em memória.
-
-### 6.2 Complexidade das operações
-
-| Operação | Array | ArrayList | Observação |
-| --- | ---: | ---: | --- |
-| Inserção no final | O(1) | O(1) amortizado | ArrayList redimensiona automaticamente |
-| Inserção no início | O(n) | O(n) | deslocamento de elementos necessário |
-| Acesso por índice | O(1) | O(1) | acesso direto por índice |
-| Busca sequencial por valor | O(n) | O(n) | mesma complexidade linear |
-| Remoção por valor | O(n) | O(n) | localizar + deslocar elementos |
-| Iteração completa | O(n) | O(n) | eficiente para listagens |
-| Crescimento dinâmico | Não automático | Sim | ArrayList gerencia redimensionamento |
-
-### 6.3 Aplicação no sistema
-
-- **Acervo de livros**: armazenamento centralizado de todas as entradas de livros.
-- **Cadastro de usuários**: gerenciamento dos usuários cadastrados no sistema.
-- **Registros de empréstimos**: histórico cronológico e controle de empréstimos ativos e encerrados.
+Essa organização mantém as responsabilidades mais claras e facilita testar os serviços sem depender diretamente da interface de console.
 
 ---
 
-## 7. 📁 Estrutura de diretórios
+## 5. 🧱 Entidades do sistema
+
+- **`LivroModel`**: representa um livro por ISBN, título e autor, além de registrar se está disponível.
+- **`UsuarioModel`**: representa um usuário por nome e CPF e mantém a referência ao livro atualmente emprestado, quando houver.
+- **`EmprestimoModel`**: associa um usuário a um livro e registra as datas do empréstimo, da devolução prevista e da devolução efetiva, além do estado do empréstimo.
+
+---
+
+## 6. ✅ Regras de negócio
+
+- Não permitir o cadastro de livros com ISBN duplicado.
+- Não permitir o cadastro de usuários com CPF ou nome duplicado.
+- Não realizar empréstimo de livro inexistente ou indisponível.
+- Não permitir que um usuário com empréstimo pendente faça outro empréstimo.
+- Ao registrar um empréstimo ou devolução, atualizar o estado do livro e do usuário.
+- Manter o registro do empréstimo no histórico após a devolução.
+
+---
+
+## 7. 📊 Estruturas de dados propostas
+
+A tabela resume as estruturas planejadas para a próxima versão. `Map` e `Deque` são interfaces que representam TADs; `LinkedHashMap` e `ArrayDeque` são implementações disponíveis na biblioteca padrão do Java.
+
+| Dados/operação | TAD | Implementação Java | Organização e uso |
+| --- | --- | --- | --- |
+| Livros — cadastro, busca e prevenção de ISBN duplicado | Mapa (`Map`) | `LinkedHashMap<String, LivroModel>` | Chave: ISBN normalizado. Busca e verificação de duplicidade em O(1) médio. Mantém a ordem de cadastro na iteração. |
+| Livros — busca por título | Mapa (`Map`) | `LinkedHashMap<String, List<LivroModel>>` como índice auxiliar | Chave: título normalizado; valor: lista de livros com esse título. Permite títulos repetidos e busca exata em O(1) médio, mais o custo de percorrer os resultados encontrados. |
+| Usuários — cadastro, busca e prevenção de CPF duplicado | Mapa (`Map`) | `LinkedHashMap<String, UsuarioModel>` | Chave: CPF normalizado. Busca e verificação de duplicidade em O(1) médio, mantendo a ordem de cadastro. |
+| Empréstimos — armazenamento do histórico e listagem do mais recente ao mais antigo | Pilha (`Deque`) | `ArrayDeque<EmprestimoModel>` | Inserir cada novo empréstimo no topo com `push`. Percorrer a pilha sem remover os itens para exibir primeiro o mais recente. |
+| Livros e usuários — exibição completa | Coleção de valores do mapa | `Map.values()` | Percorre os registros em O(n). Com `LinkedHashMap`, preserva a ordem de inserção. |
+
+### Observações
+
+- As buscas por ISBN, título e CPF devem normalizar as chaves de forma consistente. O índice de títulos deve mapear para uma lista, pois títulos podem se repetir.
+- A pilha representa o histórico completo. A listagem não deve usar `pop()`, pois isso removeria os empréstimos.
+- A busca por empréstimo ativo ainda pode percorrer o histórico em O(n); um índice adicional pode ser considerado se essa operação se tornar um gargalo.
+
+---
+
+## 8. 📁 Estrutura de diretórios
 
 ```text
 cantinhodaleitura/
@@ -138,66 +141,48 @@ cantinhodaleitura/
 
 ---
 
-## 8. 🛠️ Tecnologias utilizadas
+## 9. 🛠️ Tecnologias utilizadas
 
-- ☕ Java 17+
-- 🧱 Programação orientada a objetos
-- 🔒 Encapsulamento e modelagem de domínio
-- 📋 Coleções em memória com `ArrayList`
-- 🔍 Busca e filtragem com streams
-- 🖥️ Interface de console para interação com o usuário
+- **Java**: linguagem de programação da aplicação.
+- **Java Collections Framework**: coleções em memória, como `ArrayList`; as estruturas indicadas para a próxima versão incluem `LinkedHashMap` e `ArrayDeque`.
+- **Streams**: operações de filtragem usadas nas buscas da implementação atual.
+- **Git e GitHub**: controle de versão e hospedagem do código-fonte.
 
 ---
 
-## 9. ⚙️ Pré-requisitos
+## 10. ⚙️ Pré-requisitos
 
-- ☕ JDK 17 ou superior
-- 💻 IDE ou terminal compatível (IntelliJ, Eclipse, VS Code)
-- 🌐 Git para versionamento
-
----
-
-## 10. ▶️ Como executar o projeto
-
-1. Abra o projeto em sua IDE favorita.
-2. Compile e execute a classe principal em `src/app/Main.java`.
-3. Navegue pelo menu no console para:
-   - cadastrar livros;
-   - cadastrar usuários;
-   - emprestar e devolver livros;
-   - visualizar o acervo e o histórico.
+- JDK compatível com a versão de Java utilizada pelo projeto.
+- IDE Java ou terminal com ferramentas de compilação e execução.
+- Git para clonar o repositório e acompanhar as versões do projeto.
 
 ---
 
-## 11. 🧪 Testes e validação
+## 11. ▶️ Como executar o projeto
 
-O projeto inclui testes manuais na pasta `src/test`, realizados sem uso de JUnit, com validações diretamente em Java para confirmar regras de negócio como:
-
-- cadastro de livros duplicados;
-- cadastro de usuários duplicados;
-- busca por ISBN e por nome;
-- empréstimo de livro disponível;
-- tentativa de empréstimo com usuário ou livro inválido;
-- devolução correta e atualização de disponibilidade.
+1. Abra ou importe o projeto em uma IDE Java.
+2. Compile o código-fonte usando o JDK configurado para o projeto.
+3. Execute a classe `app.Main`, localizada em `src/app/Main.java`.
+4. Use as opções apresentadas no console para cadastrar e consultar livros e usuários ou registrar empréstimos e devoluções.
 
 ---
 
-## 12. 🚀 Próximos passos
+## 12. 🧪 Testes e validação
 
-- 🌳 Implementar estruturas de dados não lineares, como árvores e tabelas hash
-- ⚡ Otimizar operações de busca e listagem
-- 📊 Analisar complexidade de tempo e espaço com mais profundidade
-- 🎨 Melhorar a interface do usuário
-- 💾 Adicionar persistência em arquivo ou banco de dados
-- 🧪 Expandir a suíte de testes para mais cenários de borda
+O projeto inclui testes manuais em `src/test`, sem dependência do JUnit. Eles podem ser executados pelo `ManualTestRunner` e verificam cenários como:
+
+- cadastro de livros e rejeição de ISBN duplicado;
+- cadastro de usuários e rejeição de CPF ou nome duplicado;
+- buscas por ISBN, título, CPF e nome;
+- empréstimo de livro disponível e rejeição de operações inválidas;
+- devolução de livro e atualização da disponibilidade;
+- preservação do registro no histórico após a devolução.
 
 ---
 
 ## 13. 🎯 Conclusão
 
-O uso de **estruturas lineares** como `ArrayList` torna o sistema **didático, simples de entender e funcional para cenários acadêmicos e de média escala**. Isso favorece o aprendizado de POO, organização de código e manipulação de estruturas de dados em memória.
-
-Com o tempo, as próximas evoluções podem incluir **estruturas mais eficientes** e **persistência de dados**, ampliando a robustez e a escalabilidade do sistema.
+O projeto demonstra como a escolha de estruturas de dados afeta as operações de uma aplicação. A implementação atual utiliza coleções em memória e oferece uma base funcional para o gerenciamento da biblioteca. Como evolução planejada, mapas podem acelerar buscas por chaves como ISBN e CPF, enquanto uma pilha pode apresentar o histórico de empréstimos do mais recente ao mais antigo. Essas mudanças devem preservar as regras de negócio e ser acompanhadas por testes.
 
 ---
 
