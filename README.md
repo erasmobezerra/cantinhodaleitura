@@ -1,20 +1,24 @@
 # 📚 Cantinho da Leitura
 
-O **Cantinho da Leitura** é um projeto em **Java** desenvolvido para simular o gerenciamento de uma biblioteca via console. A aplicação permite cadastrar livros e usuários, registrar empréstimos, controlar devoluções e consultar o acervo sem depender de banco de dados nem de interface gráfica.
+O **Cantinho da Leitura** é uma aplicação de console desenvolvida em **Java** para resolver uma situação-problema do mundo real: o gerenciamento de uma biblioteca. O sistema permite cadastrar e consultar livros e usuários, registrar empréstimos, controlar devoluções e acompanhar o histórico, utilizando estruturas de dados escolhidas de acordo com as necessidades da aplicação.
 
-O projeto foi organizado com foco em **Programação Orientada a Objetos (POO)**, separação de responsabilidades e manipulação de coleções em memória. É uma aplicação didática para praticar modelagem de domínio, serviços, interação com o usuário, **Tipos Abstratos de Dados (TADs)** e estruturas de dados lineares e não lineares.
+O projeto é desenvolvido em etapas para a disciplina de **Abstração em Estrutura de Dados**. Na primeira versão, foram realizadas as entregas 1 e 2: definição do problema e das abstrações, seguida da implementação e dos testes das estruturas lineares necessárias. A nova versão dará continuidade ao trabalho com as entregas 3 e 4: incorporação justificada de estruturas de dados não lineares e avaliação do custo e do desempenho das operações, com documentação e relatório final.
 
 ---
 
 ## 1. 🧭 Justificativa e contexto do projeto
 
-Este projeto foi desenvolvido como requisito da disciplina de **Abstração em Estrutura de Dados**. Seu objetivo é representar operações comuns de uma biblioteca e explorar como as estruturas de dados podem apoiar o cadastro, a consulta e o controle de livros, usuários e empréstimos.
+Este projeto atende ao trabalho da disciplina de **Abstração em Estrutura de Dados**, cujo objetivo é entregar uma aplicação que resolva uma situação-problema do mundo real por meio da implementação e do uso justificado de estruturas de dados. No caso do Cantinho da Leitura, a situação-problema é organizar o acervo, os usuários e os empréstimos de uma biblioteca.
 
-A solução é organizada em etapas que envolvem:
+Na **primeira versão**, foram concluídas as duas primeiras entregas:
 
-- Identificar o problema, as entidades e as regras de negócio.
-- Implementar as operações em camadas, com estruturas de dados adequadas.
-- Validar o comportamento por meio de testes e avaliar a complexidade das operações.
+1. **Definição do problema e das abstrações (entrega 1):** descrição do problema, identificação das entidades e especificação dos TADs necessários, suas interfaces e operações.
+2. **Implementação das estruturas lineares (entrega 2):** implementação das estruturas lineares utilizadas pela aplicação e testes das operações correspondentes.
+
+Na **nova versão**, o trabalho avançará para as entregas 3 e 4:
+
+3. **Implementação de estruturas não lineares (entrega 3):** incorporação de pelo menos uma estrutura hierárquica ou de dispersão — como árvore, heap, tabela hash ou grafo —, com justificativa baseada nos requisitos da aplicação.
+4. **Avaliação, documentação e entrega (entrega 4):** análise da complexidade das operações, medições de desempenho com entradas de tamanhos crescentes, comparação entre alternativas de implementação e entrega do código documentado junto ao relatório final.
 
 ---
 
@@ -34,56 +38,9 @@ A solução é organizada em etapas que envolvem:
 
 - [ ] **Avaliação, documentação e entrega:** analisar a complexidade computacional das operações implementadas, realizar testes de desempenho com conjuntos de dados de tamanhos crescentes, comparar diferentes alternativas de implementação e entregar o código devidamente documentado, acompanhado do relatório final.
 
-
-## 3. ✨ Funcionalidades principais
-
-O sistema oferece, pela interface de console, as seguintes operações:
-
-- Cadastrar e consultar livros por ISBN e título.
-- Cadastrar e consultar usuários por CPF e nome.
-- Listar o acervo e os usuários cadastrados.
-- Registrar empréstimos e devoluções, verificando a disponibilidade dos livros.
-- Consultar o histórico de empréstimos, incluindo registros ativos e concluídos.
-- Carregar dados iniciais para facilitar a demonstração do sistema.
-
 ---
 
-## 4. 🏗️ Arquitetura do projeto
-
-A aplicação separa a interação com o usuário, as regras de negócio, os modelos de domínio e a carga de dados iniciais:
-
-- **`app.Main`**: inicializa os serviços, carrega os dados de exemplo e inicia o menu.
-- **`service.LivroService`**: gerencia o cadastro, a busca e a listagem de livros.
-- **`service.UsuarioService`**: gerencia o cadastro, a busca e a listagem de usuários.
-- **`service.BibliotecaService`**: coordena empréstimos, devoluções e o histórico.
-- **`model`**: contém os modelos `LivroModel`, `UsuarioModel` e `EmprestimoModel`.
-- **`ui`**: contém as interfaces de console para o menu, livros, usuários e empréstimos.
-- **`data.Dados`**: fornece dados iniciais para a execução demonstrativa.
-
-Essa organização mantém as responsabilidades mais claras e facilita testar os serviços sem depender diretamente da interface de console.
-
----
-
-## 5. 🧱 Entidades do sistema
-
-- **`LivroModel`**: representa um livro por ISBN, título e autor, além de registrar se está disponível.
-- **`UsuarioModel`**: representa um usuário por nome e CPF e mantém a referência ao livro atualmente emprestado, quando houver.
-- **`EmprestimoModel`**: associa um usuário a um livro e registra as datas do empréstimo, da devolução prevista e da devolução efetiva, além do estado do empréstimo.
-
----
-
-## 6. ✅ Regras de negócio
-
-- Não permitir o cadastro de livros com ISBN duplicado.
-- Não permitir o cadastro de usuários com CPF ou nome duplicado.
-- Não realizar empréstimo de livro inexistente ou indisponível.
-- Não permitir que um usuário com empréstimo pendente faça outro empréstimo.
-- Ao registrar um empréstimo ou devolução, atualizar o estado do livro e do usuário.
-- Manter o registro do empréstimo no histórico após a devolução.
-
----
-
-## 7. 📊 Estruturas de dados propostas
+## 3. 📊 Estruturas de dados propostas
 
 A tabela resume as estruturas planejadas para a próxima versão. `Map` e `Deque` são interfaces que representam TADs; `LinkedHashMap` e `ArrayDeque` são implementações disponíveis na biblioteca padrão do Java.
 
@@ -100,6 +57,54 @@ A tabela resume as estruturas planejadas para a próxima versão. `Map` e `Deque
 - As buscas por ISBN, título e CPF devem normalizar as chaves de forma consistente. O índice de títulos deve mapear para uma lista, pois títulos podem se repetir.
 - A pilha representa o histórico completo. A listagem não deve usar `pop()`, pois isso removeria os empréstimos.
 - A busca por empréstimo ativo ainda pode percorrer o histórico em O(n); um índice adicional pode ser considerado se essa operação se tornar um gargalo.
+
+---
+
+## 4. ✨ Funcionalidades principais
+
+O sistema oferece, pela interface de console, as seguintes operações:
+
+- Cadastrar e consultar livros por ISBN e título.
+- Cadastrar e consultar usuários por CPF e nome.
+- Listar o acervo e os usuários cadastrados.
+- Registrar empréstimos e devoluções, verificando a disponibilidade dos livros.
+- Consultar o histórico de empréstimos, incluindo registros ativos e concluídos.
+- Carregar dados iniciais para facilitar a demonstração do sistema.
+
+---
+
+## 5. 🏗️ Arquitetura do projeto
+
+A aplicação separa a interação com o usuário, as regras de negócio, os modelos de domínio e a carga de dados iniciais:
+
+- **`app.Main`**: inicializa os serviços, carrega os dados de exemplo e inicia o menu.
+- **`service.LivroService`**: gerencia o cadastro, a busca e a listagem de livros.
+- **`service.UsuarioService`**: gerencia o cadastro, a busca e a listagem de usuários.
+- **`service.BibliotecaService`**: coordena empréstimos, devoluções e o histórico.
+- **`model`**: contém os modelos `LivroModel`, `UsuarioModel` e `EmprestimoModel`.
+- **`ui`**: contém as interfaces de console para o menu, livros, usuários e empréstimos.
+- **`data.Dados`**: fornece dados iniciais para a execução demonstrativa.
+
+Essa organização mantém as responsabilidades mais claras e facilita testar os serviços sem depender diretamente da interface de console.
+
+---
+
+## 6. 🧱 Entidades do sistema
+
+- **`LivroModel`**: representa um livro por ISBN, título e autor, além de registrar se está disponível.
+- **`UsuarioModel`**: representa um usuário por nome e CPF e mantém a referência ao livro atualmente emprestado, quando houver.
+- **`EmprestimoModel`**: associa um usuário a um livro e registra as datas do empréstimo, da devolução prevista e da devolução efetiva, além do estado do empréstimo.
+
+---
+
+## 7. ✅ Regras de negócio
+
+- Não permitir o cadastro de livros com ISBN duplicado.
+- Não permitir o cadastro de usuários com CPF ou nome duplicado.
+- Não realizar empréstimo de livro inexistente ou indisponível.
+- Não permitir que um usuário com empréstimo pendente faça outro empréstimo.
+- Ao registrar um empréstimo ou devolução, atualizar o estado do livro e do usuário.
+- Manter o registro do empréstimo no histórico após a devolução.
 
 ---
 
